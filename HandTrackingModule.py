@@ -43,11 +43,16 @@ class handDetector():
 
         return lmList
 
+    def numberOfHands(self):
+        if self.results.multi_hand_landmarks:
+            return len(self.results.multi_hand_landmarks)
+        return 0
+
 
 def main():
     pTime = 0
     cTime = 0
-    cap = cv2.VideoCapture(1)
+    cap = cv2.VideoCapture(0)
     detector = handDetector()
     while True:
         success, img = cap.read()
